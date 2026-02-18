@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopPanel — Sign In</title>
+  <link rel="stylesheet" href="login.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="bg-noise"></div>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+
+  <div class="split">
+
+    <!-- Left: Branding -->
+    <div class="left-panel">
+      <div class="left-inner">
+        <div class="brand">
+          <div class="brand-mark">◈</div>
+          <span>ShopPanel</span>
+        </div>
+        <div class="tagline">
+          <h1>Manage your<br/><em>entire store</em><br/>from one place.</h1>
+          <p>Users · Products · Orders — all in one sleek command centre.</p>
+        </div>
+        <div class="pills">
+          <span class="pill">👤 User Management</span>
+          <span class="pill">📦 Product Catalogue</span>
+          <span class="pill">🧾 Order Tracking</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Login Form -->
+    <div class="right-panel">
+      <div class="form-box">
+
+        <div class="form-brand-mobile">
+          <div class="brand-mark">◈</div>
+          <span>ShopPanel</span>
+        </div>
+
+        <h2>Welcome back</h2>
+        <p class="form-sub">Sign in to your admin account</p>
+
+        <div id="loginAlert" class="alert" style="display:none;"></div>
+
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <label>Email</label>
+            <div class="input-row">
+              <svg class="field-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+              <input type="email" id="loginEmail" placeholder="admin@store.com" autocomplete="email"/>
+            </div>
+            <span class="err" id="emailErr"></span>
+          </div>
+
+          <div class="field">
+            <label>
+              Password
+              <a class="forgot" href="#" tabindex="-1">Forgot?</a>
+            </label>
+            <div class="input-row">
+              <svg class="field-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password"/>
+              <button type="button" class="eye" id="eyeBtn" aria-label="toggle password">
+                <svg id="eyeSvg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+            <span class="err" id="pwdErr"></span>
+          </div>
+
+          <label class="check-wrap">
+            <input type="checkbox" id="rememberMe"/>
+            <span class="checkmark"></span>
+            Remember me for 7 days
+          </label>
+
+          <button type="submit" class="btn-signin" id="signinBtn">
+            <span class="btn-label">Sign In</span>
+            <span class="btn-spin" id="spinEl" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+            </span>
+          </button>
+        </form>
+
+        <p class="no-account">New admin? <a href="#">Contact your manager</a></p>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

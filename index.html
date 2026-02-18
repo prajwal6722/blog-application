@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShopPanel — Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo-mark">◈</span>
+      <span class="logo-name">ShopPanel</span>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item active" data-tab="users">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Users</span>
+      </button>
+      <button class="nav-item" data-tab="products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        <span>Products</span>
+      </button>
+      <button class="nav-item" data-tab="orders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>Orders</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="avatar" id="sidebarAvatar">A</div>
+        <div class="user-info">
+          <span class="user-name" id="sidebarName">Admin</span>
+          <span class="user-role">Administrator</span>
+        </div>
+      </div>
+      <button class="logout-btn" id="logoutBtn" title="Sign out">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <div id="toast" class="toast"></div>
+
+    <!-- Users Tab -->
+    <section class="tab active" id="tab-users">
+      <div class="tab-header">
+        <div>
+          <h1>Users</h1>
+          <p class="tab-sub">Manage registered accounts</p>
+        </div>
+        <button class="btn-add" onclick="openModal('userModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add User
+        </button>
+      </div>
+      <div class="grid" id="usersGrid"></div>
+    </section>
+
+    <!-- Products Tab -->
+    <section class="tab" id="tab-products">
+      <div class="tab-header">
+        <div>
+          <h1>Products</h1>
+          <p class="tab-sub">Inventory catalogue</p>
+        </div>
+        <button class="btn-add" onclick="openModal('productModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Product
+        </button>
+      </div>
+      <div class="grid" id="productsGrid"></div>
+    </section>
+
+    <!-- Orders Tab -->
+    <section class="tab" id="tab-orders">
+      <div class="tab-header">
+        <div>
+          <h1>Orders</h1>
+          <p class="tab-sub">Track all placed orders</p>
+        </div>
+        <button class="btn-add" onclick="openModal('orderModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Place Order
+        </button>
+      </div>
+      <div class="grid" id="ordersGrid"></div>
+    </section>
+
+  </main>
+
+  <!-- ─── MODALS ─── -->
+
+  <!-- User Modal -->
+  <div class="backdrop" id="userModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Register User</h2>
+        <button class="close-btn" onclick="closeModal('userModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="userForm">
+        <div class="mfield">
+          <label>Full Name</label>
+          <input type="text" id="uName" placeholder="Jane Doe" required/>
+        </div>
+        <div class="mfield">
+          <label>Email</label>
+          <input type="email" id="uEmail" placeholder="jane@store.com" required/>
+        </div>
+        <div class="mfield">
+          <label>Password</label>
+          <input type="password" id="uPassword" placeholder="••••••••" required/>
+        </div>
+        <div class="mfield">
+          <label>Phone <span class="opt">(optional)</span></label>
+          <input type="text" id="uPhone" placeholder="+91 98765 43210"/>
+        </div>
+        <button type="submit" class="btn-submit">Register User</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="backdrop" id="productModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Add Product</h2>
+        <button class="close-btn" onclick="closeModal('productModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="productForm">
+        <div class="mfield">
+          <label>Product Name</label>
+          <input type="text" id="pName" placeholder="Wireless Headphones" required/>
+        </div>
+        <div class="mfield">
+          <label>Description <span class="opt">(optional)</span></label>
+          <input type="text" id="pDesc" placeholder="Short description…"/>
+        </div>
+        <div class="mfield">
+          <label>Price (₹)</label>
+          <input type="number" id="pPrice" placeholder="1999" required/>
+        </div>
+        <div class="mfield">
+          <label>Stock Quantity</label>
+          <input type="number" id="pStock" placeholder="50"/>
+        </div>
+        <button type="submit" class="btn-submit">Add Product</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Modal -->
+  <div class="backdrop" id="orderModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Place Order</h2>
+        <button class="close-btn" onclick="closeModal('orderModal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form id="orderForm">
+        <div class="mfield">
+          <label>User ID</label>
+          <input type="number" id="oUserId" placeholder="1" required/>
+        </div>
+        <div class="mfield">
+          <label>Product ID</label>
+          <input type="number" id="oProductId" placeholder="1" required/>
+        </div>
+        <div class="mfield">
+          <label>Quantity</label>
+          <input type="number" id="oQty" placeholder="2" required/>
+        </div>
+        <div class="mfield">
+          <label>Total Amount (₹)</label>
+          <input type="number" id="oTotal" placeholder="3998" required/>
+        </div>
+        <button type="submit" class="btn-submit">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
